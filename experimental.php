@@ -15,13 +15,13 @@ $orders = [
 */
 
 // fw = for who
-function order_pizza($pizzatype, $forWhom)
+function orderPizza($pizzaType, $forWhom)
 {
 
-    $type = $pizzatype;
+    $type = $pizzaType;
     $toPrint = 'A ';
-    $toPrint .= $pizzatype;
-    $pizza = calc_cts($type);
+    $toPrint .= $pizzaType;
+    $price = calculatePrice($pizzaType);
     $address = 'unknown';
 
     if($forWhom == 'Koen') {
@@ -37,38 +37,38 @@ function order_pizza($pizzatype, $forWhom)
     $toPrint .= ' pizza should be sent to ' . $forWhom . '. <br>The address: ' . $address . '.';
     echo 'Creating new order...' . '<br>';
     echo $toPrint . '<br>';
-    echo 'The bill is €'.$pizza.'.<br>';
+    echo 'The bill is €'.$price.'.<br>';
     echo 'Order finished.' . '<br><br>';
 };
 
-function total_price($pizza) 
+function totalPrice($price) 
 {
-        return $pizza;
+        return $price;
 };
 
-function test($pizza_type)
+function test($pizzaType)
 {
-    echo 'Test: type is' . $pizza_type . '<br>';
+    echo 'Test: type is' . $pizzaType . '<br>';
 };
 
-function calc_cts($pizza_type)
+function calculatePrice($pizzaType)
 {
 
     $cost = 'unknown';
 
-    if ($pizza_type == 'marguerita') {
+    if ($pizzaType == 'marguerita') {
         $cost = 5;
     }
     else {
-        if ($pizza_type == 'golden') {
+        if ($pizzaType == 'golden') {
             $cost = 100;
         }
 
-        if ($pizza_type == 'calzone') {
+        if ($pizzaType == 'calzone') {
                 $cost = 10;
             }
 
-        if ($pizza_type == 'hawai') {
+        if ($pizzaType == 'hawai') {
             throw new Exception('Computer says no');
         }
     }
@@ -76,21 +76,21 @@ function calc_cts($pizza_type)
     return $cost;
 };
 
-function order_pizza_all()
+function orderPizzaAll()
 {
     
     $test= 0;
-    order_pizza('calzone', 'Koen');
-    order_pizza('marguerita', 'Manuele');
+    orderPizza('calzone', 'Koen');
+    orderPizza('marguerita', 'Manuele');
 
-    order_pizza('golden', 'students');
+    orderPizza('golden', 'students');
 };
 
-function make_Allhappy($do_it)
+function makeAllhappy($do_it)
 {
     
     if ($do_it) {
-            order_pizza_all();
+            orderPizzaAll();
         } 
     
     else {
@@ -107,4 +107,4 @@ foreach ($orderList as $order){
 }
 */
 
-make_Allhappy(true);
+makeAllhappy(true);
